@@ -20,6 +20,8 @@ module XeroRuby
     # Defines url base path & url for overwriting
     attr_accessor :base_path
     attr_accessor :base_url
+    attr_accessor :base_api_server
+    attr_accessor :base_identity_server
 
     # Defines url for identity routes
     attr_accessor :login_url
@@ -137,20 +139,21 @@ module XeroRuby
 
     attr_accessor :force_ending_format
 
-    def initialize
+    def initialize(base_api_server = 'https://api.xero.com', base_identity_server='https://identity.xero.com')
       @scheme = 'https'
       @host = 'api.xero.com'
+      @base_api_server = base_api_server
       @base_path = '/api.xro/2.0'
       @login_url = 'https://login.xero.com/identity/connect/authorize'
-      @token_url = 'https://identity.xero.com/connect'
-      @accounting_url = 'https://api.xero.com/api.xro/2.0'
-      @asset_url = 'https://api.xero.com/assets.xro/1.0'
-      @project_url = 'https://api.xero.com/projects.xro/2.0/'
-      @files_url = 'https://api.xero.com/files.xro/1.0/'
-      @payroll_au_url = 'https://api.xero.com/payroll.xro/1.0/'
-      @payroll_nz_url = 'https://api.xero.com/payroll.xro/2.0/'
-      @payroll_uk_url = 'https://api.xero.com/payroll.xro/2.0/'
-      @app_store_url = 'https://api.xero.com/appstore/2.0/'
+      @token_url = base_identity_server + '/connect'
+      @accounting_url = base_api_server + '/api.xro/2.0'
+      @asset_url = base_api_server + '/assets.xro/1.0'
+      @project_url = base_api_server + '/projects.xro/2.0/'
+      @files_url = base_api_server + '/files.xro/1.0/'
+      @payroll_au_url = base_api_server + '/payroll.xro/1.0/'
+      @payroll_nz_url = base_api_server + '/payroll.xro/2.0/'
+      @payroll_uk_url = base_api_server + '/payroll.xro/2.0/'
+      @app_store_url = base_api_server + '/appstore/2.0/'
       @access_token = nil
       @id_token = nil
       @api_key = {}
