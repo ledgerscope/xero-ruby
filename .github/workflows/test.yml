@@ -10,7 +10,7 @@ jobs:
 
       - name: Update version
         run: |
-          sed -i "s/VERSION = '3.3.0'/VERSION = '3.4.${{github.run_number}}'/g" lib/xero-ruby/version.rb
+          sed -i "s/VERSION = '3.3.0'/VERSION = '3.3.${{github.run_number}}'/g" lib/xero-ruby/version.rb
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
