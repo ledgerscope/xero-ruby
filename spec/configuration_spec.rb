@@ -5,7 +5,7 @@ describe XeroRuby::Configuration do
 
   describe 'urls' do
     it 'should have the default value' do
-      expect(config.login_url).to eq('https://login.xero.com/identity/connect/authorize')
+      expect(config.login_url).to eq('https://identity.xero.com/identity/connect/authorize')
       expect(config.token_url).to eq('https://identity.xero.com/connect')
       expect(config.accounting_url).to eq('https://api.xero.com/api.xro/2.0')
       expect(config.asset_url).to eq('https://api.xero.com/assets.xro/1.0')
@@ -20,12 +20,12 @@ describe XeroRuby::Configuration do
   describe 'config' do
     it 'should apply the default configuration options' do
       client = XeroRuby::ApiClient.new(credentials: {})
-      expect(client.config.login_url).to eq('https://login.xero.com/identity/connect/authorize')
+      expect(client.config.login_url).to eq('https://identity.xero.com/identity/connect/authorize')
     end
 
     it 'should allow you to overwrite the default configuration options' do
-      client = XeroRuby::ApiClient.new(credentials: {}, config: {login_url: 'ngrok.login.xero.test'})
-      expect(client.config.login_url).to eq('ngrok.login.xero.test')
+      client = XeroRuby::ApiClient.new(credentials: {}, config: {base_identity_server: 'ngrok.identity.xero.test'})
+      expect(client.config.login_url).to eq('ngrok.identity.xero.test/identity/connect/authorize')
     end
 
     it 'should allow you to set the timeout config option' do

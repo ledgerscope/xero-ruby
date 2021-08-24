@@ -24,7 +24,10 @@ module XeroRuby
     attr_accessor :base_identity_server
 
     # Defines url for identity routes
-    attr_accessor :login_url
+    def login_url
+      @base_identity_server + '/identity/connect/authorize'
+    end
+
     attr_accessor :token_url
 
     # Defines base paths for seperate API's
@@ -143,8 +146,8 @@ module XeroRuby
       @scheme = 'https'
       @host = 'api.xero.com'
       @base_api_server = base_api_server
+      @base_identity_server = base_identity_server
       @base_path = '/api.xro/2.0'
-      @login_url = 'https://login.xero.com/identity/connect/authorize'
       @token_url = base_identity_server + '/connect'
       @accounting_url = base_api_server + '/api.xro/2.0'
       @asset_url = base_api_server + '/assets.xro/1.0'
