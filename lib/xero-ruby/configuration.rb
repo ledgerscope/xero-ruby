@@ -28,17 +28,42 @@ module XeroRuby
       @base_identity_server + '/identity/connect/authorize'
     end
 
-    attr_accessor :token_url
+    def token_url
+      @base_identity_server + '/connect'
+    end
 
     # Defines base paths for seperate API's
-    attr_accessor :accounting_url
-    attr_accessor :asset_url
-    attr_accessor :project_url
-    attr_accessor :files_url
-    attr_accessor :payroll_au_url
-    attr_accessor :payroll_nz_url
-    attr_accessor :payroll_uk_url
-    attr_accessor :app_store_url
+    def accounting_url
+      @base_api_server + '/api.xro/2.0'
+    end
+
+    def asset_url
+      @base_api_server + '/assets.xro/1.0'
+    end
+
+    def project_url
+      @base_api_server + '/projects.xro/2.0/'
+    end
+
+    def files_url
+      @base_api_server + '/files.xro/1.0/'
+    end
+
+    def payroll_au_url
+      @base_api_server + '/payroll.xro/1.0/'
+    end
+
+    def payroll_nz_url
+      @base_api_server + '/payroll.xro/2.0/'
+    end
+
+    def payroll_uk_url
+      @base_api_server + '/payroll.xro/2.0/'
+    end
+
+    def app_store_url
+      @base_api_server + '/appstore/2.0/'
+    end
 
     # Defines API keys used with API Key authentications.
     #
@@ -148,15 +173,6 @@ module XeroRuby
       @base_api_server = base_api_server
       @base_identity_server = base_identity_server
       @base_path = '/api.xro/2.0'
-      @token_url = base_identity_server + '/connect'
-      @accounting_url = base_api_server + '/api.xro/2.0'
-      @asset_url = base_api_server + '/assets.xro/1.0'
-      @project_url = base_api_server + '/projects.xro/2.0/'
-      @files_url = base_api_server + '/files.xro/1.0/'
-      @payroll_au_url = base_api_server + '/payroll.xro/1.0/'
-      @payroll_nz_url = base_api_server + '/payroll.xro/2.0/'
-      @payroll_uk_url = base_api_server + '/payroll.xro/2.0/'
-      @app_store_url = base_api_server + '/appstore/2.0/'
       @access_token = nil
       @id_token = nil
       @api_key = {}
