@@ -191,7 +191,7 @@ module XeroRuby
 
     def decode_jwt(tkn, verify=true)
       if verify == true
-        jwks_data = JSON.parse(Faraday.get('https://identity.xero.com/.well-known/openid-configuration/jwks').body)
+        jwks_data = JSON.parse(Faraday.get(@config.base_identity_server + '/.well-known/openid-configuration/jwks').body)
         jwk_set = JSON::JWK::Set.new(jwks_data)
         JSON::JWT.decode(tkn, jwk_set)
       else
