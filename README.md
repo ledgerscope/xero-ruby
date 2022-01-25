@@ -4,7 +4,7 @@
 [![Github stars](https://img.shields.io/github/stars/XeroAPI/xero-ruby.svg)](https://github.com/XeroAPI/xero-ruby/stargazers)
 ![total downloads](https://ruby-gem-downloads-badge.herokuapp.com/xero-ruby?type=total)
 
-The xero-ruby SDK makes it easy for developers to access Xero's APIs in their Ruby code, and build robust applications and software using small business & general ledger accounting data.
+The xero-ruby SDK makes it easy for developers to access QuickBooks Online and Sage Business Cloud Accounting data via Xero's APIs in their **Ruby** code, and build robust applications and software using small business & general ledger accounting data.
 # Table of Contents
 - [API Client documentation](#api-client-documentation)
 - [Sample Applications](#sample-applications)
@@ -51,11 +51,12 @@ Sample apps can get you started quickly with simple auth flows to advanced usage
 
 <hr>
 
-## Xero Account Requirements
-- Create a [free Xero user account](https://www.xero.com/us/signup/api/)
-- Login to your Xero developer [dashboard](https://developer.xero.com/app/manage) and create an API application
+## Ledgerflow Account Requirements
+- Create a [free Ledgerflow user account](https://flow.ledgerscope.com/Account/Register)
+- Login to your Ledgerflow developer [dashboard](https://flow.ledgerscope.com/Partner/App) and create an API application
 - Copy the credentials from your API app and store them using a secure ENV variable strategy
 - Decide the [neccesary scopes](https://developer.xero.com/documentation/oauth2/scopes) for your app's functionality
+- The source accounting software values are 1004 to return QuickBooks Online data and 1009 to return Sage Business Cloud Accounting data
 
 # Installation
 To install this gem to your project
@@ -89,7 +90,7 @@ config = { timeout: 30, debugging: true }
 ```
 ---
 ## Authentication
-All API requests go through Xero's OAuth2.0 gateway and require a valid `access_token` to be set on the `xero_client`, which autmoatically appends the `access_token` [JWT](https://jwt.io/) to the header of each request.
+All API requests go through Xero's OAuth2.0 gateway and require a valid `access_token` to be set on the `xero_client`, which automatically appends the `access_token` [JWT](https://jwt.io/) to the header of each request.
 
 If you are making an API call for the first time:
 
